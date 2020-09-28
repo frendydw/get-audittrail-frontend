@@ -18,4 +18,8 @@ export class AudittrailService {
   getAudittrailList(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
+
+  getAudittrailAll(): Observable<any> {
+    return this.http.get(`${this.baseUrl}-get`);
+  }
 }

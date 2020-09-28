@@ -7,17 +7,30 @@
       <thead>
         <tr>
           <th>Id</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Role</th>
+          <th>Id Merch</th>
+          <th>Field</th>
+          <th>Old Value</th>
+          <th>New Value</th>
+          <th>Created Date</th>
+          <th>Created By</th>
+          <th>Created By Name</th>
+          <th>Created Terminal</th>
+          <th>Changes Type</th>
+
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let audittrail of audittrails | async">
           <td>{{audittrail.id}}</td>
-          <td>{{audittrail.username}}</td>
-          <td>{{audittrail.email}}</td>
-          <td>{{audittrail.role}}</td>
+          <td>{{audittrail.idFdmMerchant}}</td>
+          <td>{{audittrail.field}}</td>
+          <td>{{audittrail.oldValue}}</td>
+          <td>{{audittrail.newValue}}</td>
+          <td>{{audittrail.createdDate}}</td>
+          <td>{{audittrail.createdBy}}</td>
+          <td>{{audittrail.createdByName}}</td>
+          <td>{{audittrail.createdTerminal}}</td>
+          <td>{{audittrail.changesType}}</td>
         </tr>
       </tbody>
     </table>

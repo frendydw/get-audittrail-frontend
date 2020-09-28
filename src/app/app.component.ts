@@ -20,7 +20,7 @@ export class AppComponent {
   }
 
   reloadData() {
-    this.audittrails = this.audittrailService.getAudittrailList();
-    this.audittrailService.getAudittrailList().subscribe(val => console.log(val))
+    this.audittrails = this.audittrailService.getAudittrailAll();
+    this.audittrailService.getAudittrailAll().subscribe(val => console.log(val))
   }
 }
