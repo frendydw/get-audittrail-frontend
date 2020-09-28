@@ -1,7 +1,7 @@
-import { User } from './audittrail';
+import { Audittrail } from './audittrail';
 
-describe('User', () => {
+describe('Audittrail', () => {
   it('should create an instance', () => {
-    expect(new User()).toBeTruthy();
+    expect(new Audittrail()).toBeTruthy();
   });
 });

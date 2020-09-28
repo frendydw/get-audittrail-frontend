@@ -13,11 +13,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of users | async">
-          <td>{{user.id}}</td>
-          <td>{{user.username}}</td>
-          <td>{{user.email}}</td>
-          <td>{{user.role}}</td>
+        <tr *ngFor="let audittrail of audittrails | async">
+          <td>{{audittrail.id}}</td>
+          <td>{{audittrail.username}}</td>
+          <td>{{audittrail.email}}</td>
+          <td>{{audittrail.role}}</td>
         </tr>
       </tbody>
     </table>

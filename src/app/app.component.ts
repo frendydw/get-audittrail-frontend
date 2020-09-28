@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { User } from './audittrail';
-import { UserService } from './audittrail.service';
+import { Audittrail } from './audittrail';
+import { AudittrailService } from './audittrail.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +10,9 @@ import { UserService } from './audittrail.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'System User';
+  audittrails: Observable<Audittrail[]>;
 
-  users: Observable<User[]>;
-
-  constructor(private userService: UserService,
+  constructor(private audittrailService: AudittrailService,
     private router: Router) {}
 
   ngOnInit() {
@@ -22,7 +20,7 @@ export class AppComponent {
   }
 
   reloadData() {
-    this.users = this.userService.getUsersList();
-    this.userService.getUsersList().subscribe(val => console.log(val))
+    this.audittrails = this.audittrailService.getAudittrailList();
+    this.audittrailService.getAudittrailList().subscribe(val => console.log(val))
   }
 }

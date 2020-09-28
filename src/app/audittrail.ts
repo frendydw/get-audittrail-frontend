@@ -1,4 +1,4 @@
-export class User {
+export class Audittrail {
     id: number;
     username: string;
     email: string;
