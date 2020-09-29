@@ -11,15 +11,42 @@ import { AudittrailService } from './audittrail.service';
 })
 export class AppComponent {
   audittrails: Observable<Audittrail[]>;
+  page: number;
+  pageSize: number;
+  startFrom: number;
 
   constructor(private audittrailService: AudittrailService,
-              private router: Router) {}
+              private router: Router) {
+  }
 
+  // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit() {
+    this.startFrom = 0;
+    this.page = 0;
+    this.pageSize = 20;
     this.reloadData();
   }
 
   reloadData() {
-    this.audittrails = this.audittrailService.getAudittrailAll('1', '20');
+    this.audittrails = this.audittrailService.getAudittrailAll(this.page.toString(), this.pageSize.toString());
+  }
+
+  numbers(startFrom: number): number[] {
+    return [...Array(5).keys()].map(i => i + startFrom);
+  }
+
+  pagination(page: number) {
+    this.page = page;
+    this.reloadData();
+  }
+
+  nextPrevious(num: number) {
+    this.startFrom += num;
+    if (this.startFrom === -1) {
+      this.startFrom += 1;
+      return;
+    }
+    this.page += num;
+    this.reloadData();
   }
 }

@@ -1,8 +1,12 @@
 export class Audittrail {
     id: number;
-    username: string;
-    email: string;
-    password: string;
-    role: string;
+    idFdmMerchant: number;
+    field: string;
+    oldValue: string;
+    newValue: string;
+    createdDate: string;
+    createdBy: string;
+    createdByName: string;
+    createdTerminal: string;
+    changesType: string;
   }
-  

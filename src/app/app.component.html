@@ -3,6 +3,8 @@
     <h2>Audittrail Magenta</h2>
   </div>
   <div class="panel-body">
+
+    <span>page: {{page+1}}</span>
     <table class="table table-bordered mt-5">
       <thead>
         <tr>
@@ -34,5 +36,15 @@
         </tr>
       </tbody>
     </table>
+
+    <div col>
+      <button (click)="nextPrevious(-1)">Previous</button>
+
+      <button class="btn" data-toggle="button"
+              *ngFor="let i of numbers(startFrom)" (click)="pagination(i)">{{i+1}}</button>
+
+      <button (click)="nextPrevious(1)">Next</button>
+    </div>
+
   </div>
 </div>
