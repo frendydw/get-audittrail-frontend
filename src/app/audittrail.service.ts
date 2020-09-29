@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AudittrailService {
 
-  private baseUrl = 'http://localhost:8080/api/audittrail';
+  private baseUrl = 'http://localhost:8080/api/';
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +19,12 @@ export class AudittrailService {
     return this.http.get(`${this.baseUrl}`);
   }
 
-  getAudittrailAll(): Observable<any> {
-    return this.http.get(`${this.baseUrl}-get`);
+  getAudittrailAll(page: string, pageSize: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}` + '/audittrail-get', {
+      params: {
+        page,
+        pageSize
+      }
+    });
   }
 }

@@ -13,14 +13,13 @@ export class AppComponent {
   audittrails: Observable<Audittrail[]>;
 
   constructor(private audittrailService: AudittrailService,
-    private router: Router) {}
+              private router: Router) {}
 
   ngOnInit() {
     this.reloadData();
   }
 
   reloadData() {
-    this.audittrails = this.audittrailService.getAudittrailAll();
-    this.audittrailService.getAudittrailAll().subscribe(val => console.log(val))
+    this.audittrails = this.audittrailService.getAudittrailAll('1', '20');
   }
 }
