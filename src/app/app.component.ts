@@ -14,21 +14,23 @@ export class AppComponent {
   page: number;
   pageSize: number;
   startFrom: number;
+  changeType: string;
 
   constructor(private audittrailService: AudittrailService,
               private router: Router) {
+    this.changeType = 'ALL';
+    this.startFrom = 0;
+    this.page = 0;
+    this.pageSize = 25;
   }
 
   // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit() {
-    this.startFrom = 0;
-    this.page = 0;
-    this.pageSize = 20;
     this.reloadData();
   }
 
   reloadData() {
-    this.audittrails = this.audittrailService.getAudittrailAll(this.page.toString(), this.pageSize.toString());
+    this.audittrails = this.audittrailService.getAudittrailAll(this.page.toString(), this.pageSize.toString(), this.changeType);
   }
 
   numbers(startFrom: number): number[] {

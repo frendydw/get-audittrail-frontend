@@ -19,11 +19,12 @@ export class AudittrailService {
     return this.http.get(`${this.baseUrl}`);
   }
 
-  getAudittrailAll(page: string, pageSize: string): Observable<any> {
+  getAudittrailAll(page: string, pageSize: string, changesType: string): Observable<any> {
     return this.http.get(`${this.baseUrl}` + '/audittrail-get', {
       params: {
         page,
-        pageSize
+        pageSize,
+        changesType
       }
     });
   }

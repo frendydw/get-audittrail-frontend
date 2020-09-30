@@ -2,12 +2,31 @@
   <div class="panel-heading text-center">
     <h2>Audittrail Magenta</h2>
   </div>
-  <div class="panel-body">
+  <div class="panel-body mt-5">
+    <div>
+      <span>page: {{page+1}}</span>
 
-    <span>page: {{page+1}}</span>
-    <table class="table table-bordered mt-5">
+      <label for="pageSize" class="ml-3">Page Size:&nbsp; </label>
+      <select name="pageSize" id="pageSize" [(ngModel)]="pageSize" (ngModelChange)="reloadData()">
+        <option value="25" selected>25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+      </select>
+
+      <label for="changeTypes" class="ml-3">Change Types:&nbsp; </label>
+      <select name="changeTypes" id="changeTypes" [(ngModel)]="changeType" (ngModelChange)="reloadData()">
+        <option value="ALL" selected>All</option>
+        <option value="INS">Insert</option>
+        <option value="UPD">Update</option>
+        <option value="DEL">Delete</option>
+      </select>
+    </div>
+
+    <table class="table table-bordered mt-1">
       <thead>
         <tr>
+          <th>No.</th>
           <th>Id</th>
           <th>Id Merch</th>
           <th>Field</th>
@@ -22,7 +41,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let audittrail of audittrails | async">
+        <tr *ngFor="let audittrail of audittrails | async; index as i">
+          <td>{{(i+1)+(page*pageSize)}}</td>
           <td>{{audittrail.id}}</td>
           <td>{{audittrail.idFdmMerchant}}</td>
           <td>{{audittrail.field}}</td>
