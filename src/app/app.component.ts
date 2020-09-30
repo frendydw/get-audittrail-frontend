@@ -15,10 +15,12 @@ export class AppComponent {
   pageSize: number;
   startFrom: number;
   changeType: string;
+  search: string;
 
   constructor(private audittrailService: AudittrailService,
               private router: Router) {
     this.changeType = 'ALL';
+    this.search = '';
     this.startFrom = 0;
     this.page = 0;
     this.pageSize = 25;
@@ -30,7 +32,8 @@ export class AppComponent {
   }
 
   reloadData() {
-    this.audittrails = this.audittrailService.getAudittrailAll(this.page.toString(), this.pageSize.toString(), this.changeType);
+    this.audittrails = this.audittrailService.getAudittrailAll(this.page.toString(), this.pageSize.toString(),
+      this.changeType, this.search);
   }
 
   numbers(startFrom: number): number[] {

@@ -21,6 +21,9 @@
         <option value="UPD">Update</option>
         <option value="DEL">Delete</option>
       </select>
+
+      <input type="text" [(ngModel)]="search" class="ml-5">
+      <button (click)="reloadData()">Search</button>
     </div>
 
     <table class="table table-bordered mt-1">
