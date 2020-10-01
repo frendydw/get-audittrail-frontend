@@ -3,31 +3,33 @@
     <h2>Audittrail Magenta</h2>
   </div>
   <div class="panel-body mt-5">
-    <div>
-      <span>page: {{page+1}}</span>
 
-      <label for="pageSize" class="ml-3">Page Size:&nbsp; </label>
-      <select name="pageSize" id="pageSize" [(ngModel)]="pageSize" (ngModelChange)="reloadData()">
-        <option value="25" selected>25</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-        <option value="200">200</option>
-      </select>
+    <div  class="container-fluid">
+      <div>
+        <span>page: {{page+1}}</span>
 
-      <label for="changeTypes" class="ml-3">Change Types:&nbsp; </label>
-      <select name="changeTypes" id="changeTypes" [(ngModel)]="changeType" (ngModelChange)="reloadData()">
-        <option value="ALL" selected>All</option>
-        <option value="INS">Insert</option>
-        <option value="UPD">Update</option>
-        <option value="DEL">Delete</option>
-      </select>
+        <label for="pageSize" class="ml-3">Page Size:&nbsp; </label>
+        <select name="pageSize" id="pageSize" [(ngModel)]="pageSize" (ngModelChange)="reloadData()">
+          <option value="25" selected>25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="200">200</option>
+        </select>
 
-      <input type="text" [(ngModel)]="search" class="ml-5">
-      <button (click)="reloadData()">Search</button>
-    </div>
+        <label for="changeTypes" class="ml-3">Change Types:&nbsp; </label>
+        <select name="changeTypes" id="changeTypes" [(ngModel)]="changeType" (ngModelChange)="reloadData()">
+          <option value="ALL" selected>All</option>
+          <option value="INS">Insert</option>
+          <option value="UPD">Update</option>
+          <option value="DEL">Delete</option>
+        </select>
 
-    <table class="table table-bordered mt-1">
-      <thead>
+        <input type="text" [(ngModel)]="search" class="ml-5">
+        <button (click)="reloadData()">Search</button>
+      </div>
+
+      <table class="table table-bordered table-sm mt-1" style="width: 80%">
+        <thead>
         <tr>
           <th>No.</th>
           <th>Id</th>
@@ -42,8 +44,8 @@
           <th>Changes Type</th>
 
         </tr>
-      </thead>
-      <tbody>
+        </thead>
+        <tbody>
         <tr *ngFor="let audittrail of audittrails | async; index as i">
           <td>{{(i+1)+(page*pageSize)}}</td>
           <td>{{audittrail.id}}</td>
@@ -57,8 +59,10 @@
           <td>{{audittrail.createdTerminal}}</td>
           <td>{{audittrail.changesType}}</td>
         </tr>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
+
 
     <div col>
       <button (click)="nextPrevious(-1)">Previous</button>
