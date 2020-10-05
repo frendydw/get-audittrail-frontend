@@ -16,6 +16,7 @@ export class AudittrailComponent {
   startFrom: number;
   changeType: string;
   search: string;
+  idMerchant: number;
   event: Audittrail[];
 
   constructor(private audittrailService: AudittrailService,
@@ -25,6 +26,7 @@ export class AudittrailComponent {
     this.startFrom = 0;
     this.page = 0;
     this.pageSize = 25;
+    this.idMerchant = 0;
   }
 
   // tslint:disable-next-line:use-lifecycle-interface
@@ -34,7 +36,7 @@ export class AudittrailComponent {
 
   reloadData() {
     this.audittrails = this.audittrailService.getAudittrailAll(this.page.toString(), this.pageSize.toString(),
-      this.changeType, this.search);
+      this.changeType, this.search, this.idMerchant.toString());
     console.log(this.audittrails.subscribe(event => this.event = event));
 
   }
