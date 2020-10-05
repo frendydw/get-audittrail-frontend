@@ -5,10 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule} from 'ngx-pagination';
+import {ChartComponent} from './chart/chart.component';
+import {AudittrailComponent} from './audittrail.component';
+import {ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ChartComponent,
+    AudittrailComponent,
   ],
   imports: [
     BrowserModule,
@@ -16,7 +21,8 @@ import { NgxPaginationModule} from 'ngx-pagination';
     FormsModule,
     HttpClientModule,
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

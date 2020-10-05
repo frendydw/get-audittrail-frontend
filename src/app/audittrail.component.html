@@ -1,0 +1,79 @@
+<div class="panel panel-primary p-5">
+  <div class="panel-heading row text-center">
+    <img class="col-2" src="../assets/img/magenta.png" alt="">
+
+    <h2 class="col-6 mt-1">Audittrail Magenta</h2>
+  </div>
+  <div class="panel-body mt-5">
+
+    <div  class="container-fluid">
+      <div>
+        <span>page: {{page+1}}</span>
+
+        <label for="pageSize" class="ml-3">Page Size:&nbsp; </label>
+        <select name="pageSize" id="pageSize" [(ngModel)]="pageSize" (ngModelChange)="reloadData()">
+          <option value="25" selected>25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="200">200</option>
+        </select>
+
+        <label for="changeTypes" class="ml-3">Change Types:&nbsp; </label>
+        <select name="changeTypes" id="changeTypes" [(ngModel)]="changeType" (ngModelChange)="reloadData()">
+          <option value="ALL" selected>All</option>
+          <option value="INS">Insert</option>
+          <option value="UPD">Update</option>
+          <option value="DEL">Delete</option>
+        </select>
+
+        <input type="text" [(ngModel)]="search" class="ml-5">
+        <button (click)="reloadData()">Search</button>
+      </div>
+
+      <table class="table table-bordered table-sm mt-1" style="width: 80%">
+        <thead>
+        <tr>
+          <th>No.</th>
+          <th>Id</th>
+          <th>Id Merch</th>
+          <th>Field</th>
+          <th>Old Value</th>
+          <th>New Value</th>
+          <th>Created Date</th>
+          <th>Created By</th>
+          <th>Created By Name</th>
+          <th>Created Terminal</th>
+          <th>Changes Type</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let audittrail of audittrails | async; index as i">
+          <td>{{(i+1)+(page*pageSize)}}</td>
+          <td>{{audittrail.id}}</td>
+          <td>{{audittrail.idFdmMerchant}}</td>
+          <td>{{audittrail.field}}</td>
+          <td>{{audittrail.oldValue}}</td>
+          <td>{{audittrail.newValue}}</td>
+          <td>{{audittrail.createdDate}}</td>
+          <td>{{audittrail.createdBy}}</td>
+          <td>{{audittrail.createdByName}}</td>
+          <td>{{audittrail.createdTerminal}}</td>
+          <td>{{audittrail.changesType}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <div>
+      <button (click)="nextPrevious(-1)">Previous</button>
+
+      <button class="btn" data-toggle="button"
+              *ngFor="let i of numbers(startFrom)" (click)="pagination(i)">{{i+1}}</button>
+
+      <button (click)="nextPrevious(1)">Next</button>
+    </div>
+
+  </div>
+</div>
