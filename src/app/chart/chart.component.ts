@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent {
+  hello = 100000000000;
   title = 'Audittrail Change Type Bar Graph';
 
   // ADD CHART OPTIONS.
@@ -29,6 +30,10 @@ export class ChartComponent {
       backgroundColor: 'rgba(44,130,201,1)'
     },
   ];
+
+  insertCount = this.chartData[0].data[0].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  updateCount = this.chartData[0].data[1].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+  deleteCOunt = this.chartData[0].data[2].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 
   // CHART CLICK EVENT.
   onChartClick(event) {
