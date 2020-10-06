@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Audittrail } from './audittrail';
-import { AudittrailService } from './audittrail.service';
+import { Audittrail } from '../audittrail';
+import { AudittrailService } from '../audittrail.service';
 
 @Component({
   selector: 'app-audittrail',

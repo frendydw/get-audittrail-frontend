@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule} from 'ngx-pagination';
 import {ChartComponent} from './chart/chart.component';
-import {AudittrailComponent} from './audittrail.component';
+import {AudittrailComponent} from './audittrail/audittrail.component';
 import {ChartsModule} from 'ng2-charts';
 
 @NgModule({

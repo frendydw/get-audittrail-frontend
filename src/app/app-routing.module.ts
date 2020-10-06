@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ChartComponent} from './chart/chart.component';
-import {AudittrailComponent} from './audittrail.component';
+import {AudittrailComponent} from './audittrail/audittrail.component';
 const routes: Routes = [
   { path: '', redirectTo: 'audittrail', pathMatch: 'full' },
   { path: 'audittrail', component: AudittrailComponent },
