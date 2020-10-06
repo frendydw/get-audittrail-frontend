@@ -1,8 +1,11 @@
 
 <html>
-  <div class="p-5">
 
-    <div class="row">
+  <div class="p-5">
+    <div class="loading text-center" *ngIf="!flag">
+      <h1>Loading...</h1>
+    </div>
+    <div class="row" *ngIf="this.flag">
       <div class="col-1"></div>
       <div class="col-6">
         <h3>
@@ -10,7 +13,6 @@
         </h3>
 
         <canvas
-          *ngIf="this.flag"
           baseChart
           height="200px"
           [chartType]="'bar'"
