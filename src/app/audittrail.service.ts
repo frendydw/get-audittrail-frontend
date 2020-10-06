@@ -30,4 +30,8 @@ export class AudittrailService {
       }
     });
   }
+
+  getAudittrailChangeTypeCount(): Observable<any> {
+    return this.http.get(`${this.baseUrl}` + '/audittrail-count-change-type');
+  }
 }

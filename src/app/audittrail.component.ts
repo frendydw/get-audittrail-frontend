@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Audittrail } from './audittrail';
@@ -9,7 +9,7 @@ import { AudittrailService } from './audittrail.service';
   templateUrl: './audittrail.component.html',
   styleUrls: ['./audittrail.component.css']
 })
-export class AudittrailComponent {
+export class AudittrailComponent implements OnInit{
   audittrails: Observable<Audittrail[]>;
   page: number;
   pageSize: number;
@@ -29,7 +29,6 @@ export class AudittrailComponent {
     this.idMerchant = 0;
   }
 
-  // tslint:disable-next-line:use-lifecycle-interface
   ngOnInit() {
     this.reloadData();
   }

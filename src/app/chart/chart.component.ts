@@ -1,13 +1,27 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import {AudittrailService} from '../audittrail.service';
 
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.css']
 })
-export class ChartComponent {
-  hello = 100000000000;
+export class ChartComponent implements OnInit {
+  private event: any;
+  flag: boolean;
+  constructor(private audittrailService: AudittrailService,
+              private router: Router) {
+    this.flag = false;
+  }
+
+  insertCount: number;
+  updateCount: number;
+  deleteCount: number;
+  insertValue: string;
+  updateValue: string;
+  deleteValue: string;
+
   title = 'Audittrail Change Type Bar Graph';
 
   // ADD CHART OPTIONS.
@@ -19,8 +33,8 @@ export class ChartComponent {
   // STATIC DATA FOR THE CHART IN JSON FORMAT.
   chartData = [
     {
-      label: 'Change Type Count',
-      data: [558603, 20700, 153738]
+      label: 'Audittrail Changes Type Count',
+      data: []
     }
   ];
 
@@ -31,12 +45,27 @@ export class ChartComponent {
     },
   ];
 
-  insertCount = this.chartData[0].data[0].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-  updateCount = this.chartData[0].data[1].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-  deleteCOunt = this.chartData[0].data[2].toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
 
   // CHART CLICK EVENT.
   onChartClick(event) {
     console.log(event);
+  }
+
+
+  ngOnInit(): void {
+    this.audittrailService.getAudittrailChangeTypeCount().subscribe(res => {
+      this.insertCount = (res[0][0]);
+      this.updateCount = (res[0][1]);
+      this.deleteCount = (res[0][2]);
+      this.chartData[0].data[0] = this.insertCount;
+      this.chartData[0].data[1] = this.updateCount;
+      this.chartData[0].data[2] = this.deleteCount;
+      this.insertValue = this.insertCount.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+      this.updateValue = this.updateCount.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+      this.deleteValue = this.deleteCount.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+
+      this.flag = true;
+    });
   }
 }

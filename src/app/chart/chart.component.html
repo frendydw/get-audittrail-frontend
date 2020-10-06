@@ -1,13 +1,16 @@
 
 <html>
-  <div class="p-3">
-    <h3>
-      {{title}}
-    </h3>
+  <div class="p-5">
 
     <div class="row">
+      <div class="col-1"></div>
       <div class="col-6">
+        <h3>
+          {{title}}
+        </h3>
+
         <canvas
+          *ngIf="this.flag"
           baseChart
           height="200px"
           [chartType]="'bar'"
@@ -25,9 +28,9 @@
         <p>Delete</p>
       </div>
       <div class="col-2">
-        <p>: {{insertCount}}</p>
-        <p>: {{updateCount}}</p>
-        <p>: {{deleteCOunt}}</p>
+        <p>: {{insertValue}}</p>
+        <p>: {{updateValue}}</p>
+        <p>: {{deleteValue}}</p>
       </div>
     </div>
   </div>
