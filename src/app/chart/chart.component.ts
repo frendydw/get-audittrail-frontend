@@ -56,8 +56,8 @@ export class ChartComponent implements OnInit {
   ngOnInit(): void {
     this.audittrailService.getAudittrailChangeTypeCount().subscribe(res => {
       this.insertCount = (res[0][0]);
-      this.updateCount = (res[0][1]);
-      this.deleteCount = (res[0][2]);
+      this.updateCount = (res[1][0]);
+      this.deleteCount = (res[2][0]);
       this.chartData[0].data[0] = this.insertCount;
       this.chartData[0].data[1] = this.updateCount;
       this.chartData[0].data[2] = this.deleteCount;
